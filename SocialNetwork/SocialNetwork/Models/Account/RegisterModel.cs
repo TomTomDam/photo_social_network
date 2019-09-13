@@ -8,6 +8,9 @@ namespace SocialNetwork.Models
 {
     public class RegisterModel
     {
+        [Key]
+        public int id { get; set; }
+
         [Required]
         [Display(Name = "Username")]
         public string username { get; set; }
@@ -19,7 +22,7 @@ namespace SocialNetwork.Models
         public string password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string confirmPassword { get; set; }
     }

@@ -8,6 +8,9 @@ namespace SocialNetwork.Models
 {
     public class LoginModel
     {
+        [Key]
+        public int id { get; set; }
+
         [Required]
         [Display(Name = "Username")]
         public string username { get; set; }
