@@ -6,8 +6,12 @@ using System.Web;
 
 namespace SocialNetwork.Models
 {
-    public class ResetPasswordModel
+    public class ResetPasswordViewModel
     {
+        [Key]
+        [System.Web.Mvc.HiddenInput]
+        public int id { get; set; }
+
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Current password")]
@@ -18,6 +22,10 @@ namespace SocialNetwork.Models
         [DataType(DataType.Password)]
         [Display(Name = "New password")]
         public string newPassword { get; set; }
-        public string confirmPassword { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [Compare("newPassword", ErrorMessage = "The password and confirmation password do not match.")]
+        public string confirmResetPassword { get; set; }
     }
 }

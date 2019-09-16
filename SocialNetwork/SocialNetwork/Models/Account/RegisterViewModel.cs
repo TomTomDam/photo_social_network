@@ -6,9 +6,10 @@ using System.Web;
 
 namespace SocialNetwork.Models
 {
-    public class LoginModel
+    public class RegisterViewModel
     {
         [Key]
+        [System.Web.Mvc.HiddenInput]
         public int id { get; set; }
 
         [Required]
@@ -16,11 +17,14 @@ namespace SocialNetwork.Models
         public string username { get; set; }
 
         [Required]
+        [StringLength(20, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string password { get; set; }
 
-        [Display(Name = "Remember me?")]
-        public bool rememberMe { get; set; }
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [Compare("password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string confirmPassword { get; set; }
     }
 }

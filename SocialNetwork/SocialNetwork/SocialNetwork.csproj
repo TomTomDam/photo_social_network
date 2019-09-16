@@ -194,12 +194,13 @@
     </Compile>
     <Compile Include="Models\Account\Account.cs" />
     <Compile Include="Models\Account\AccountContext.cs" />
+    <Compile Include="Models\Account\AccountViewModel.cs" />
     <Compile Include="Models\Comment.cs" />
-    <Compile Include="Models\Account\LoginModel.cs" />
-    <Compile Include="Models\Account\ResetPasswordModel.cs" />
+    <Compile Include="Models\Account\LoginViewModel.cs" />
+    <Compile Include="Models\Account\ResetPasswordViewModel.cs" />
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\PhotoSocialNetwork_DB.cs" />
-    <Compile Include="Models\Account\RegisterModel.cs" />
+    <Compile Include="Models\Account\RegisterViewModel.cs" />
     <Compile Include="Models\PhotoSocialNetwork_Initializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -241,8 +242,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\LoggedIn.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
