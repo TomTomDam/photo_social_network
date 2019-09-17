@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using SocialNetwork.Controllers.ActionFilters;
 
 namespace SocialNetwork.Controllers
 {
+    [AuthorizationFilter]
     public class AccountController : Controller
     {
         //Account DBContext
@@ -20,7 +22,6 @@ namespace SocialNetwork.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-
             var login = db.user
                 .Include(u => u.id)
                 .Include(u => u.username)
@@ -44,7 +45,7 @@ namespace SocialNetwork.Controllers
                 rememberMe = user.rememberMe
             };
 
-            var usr = db.user.Single(u => u.username == user.username && u.password == user.password);
+            var usr = db.user.Where(u => u.username == user.username && u.password == user.password).FirstOrDefault();
 
             if (usr != null)
             {
@@ -98,6 +99,24 @@ namespace SocialNetwork.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+        
+        //GET: Account/Person
+        public ActionResult Person(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Account account = db.user.Find(id);
+
+            if (account == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(account);
+        }
 
         //GET: Account/Register
         [AllowAnonymous]
@@ -111,13 +130,14 @@ namespace SocialNetwork.Controllers
         [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register([Bind(Include = "username, password, confirmPassword")]RegisterViewModel user)
+        public ActionResult Register([Bind(Include = "username, password, email, confirmPassword")]RegisterViewModel user)
         {
             //Map RegisterViewModel to Account model
             Account model = new Account()
             {
                 id = user.id,
                 username = user.username,
+                email = user.email,
                 password = user.password,
                 confirmPassword = user.confirmPassword,
             };
@@ -128,14 +148,14 @@ namespace SocialNetwork.Controllers
                 db.SaveChanges();
                 ModelState.Clear();
 
-                ViewBag.Message = user.username + " " + "has been successfully registered.";
+                ViewBag.Message = user.username + " " + "has been successfully registered. Redirecting you to the login page...";
             }
             else
             {
                 ModelState.AddModelError("", "We could not register your account.");
             }
 
-            return View(user);
+            return RedirectToAction("Login", "Account");
         }
 
         //GET: Account/ResetPassword

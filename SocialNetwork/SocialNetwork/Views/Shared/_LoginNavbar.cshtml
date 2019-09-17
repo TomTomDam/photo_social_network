@@ -1,0 +1,18 @@
+﻿@if (Session["username"] != null)
+{
+
+    using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { @class = "navbar-right" }))
+    {
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink(" Welcome " + Session["username"] + "!", "Person", "Account", new { id = Session["id"] }, new { @class = "fas fa-user" })</li>
+            <li>@Html.ActionLink("Log out", "Logout", "Account")</li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Login", "Login", "Account")</li>
+        <li>@Html.ActionLink("Register", "Register", "Account")</li>
+    </ul>
+}
