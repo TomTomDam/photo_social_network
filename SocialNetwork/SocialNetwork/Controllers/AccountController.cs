@@ -148,14 +148,27 @@ namespace SocialNetwork.Controllers
                 db.SaveChanges();
                 ModelState.Clear();
 
-                ViewBag.Message = user.username + " " + "has been successfully registered. Redirecting you to the login page...";
+                ViewBag.Message = user.username + " " + "has been successfully registered. Redirecting you to the home page...";
             }
             else
             {
                 ModelState.AddModelError("", "We could not register your account.");
             }
 
-            return RedirectToAction("Login", "Account");
+            return View(user);
+        }
+
+        //Check if username already exists
+        [AllowAnonymous]
+        public JsonResult UsernameAlreadyExists(RegisterViewModel user, string username)
+        {
+            return Json(!db.user.Any(u => u.username == username), JsonRequestBehavior.AllowGet);
+        }
+        //Check if email already exists
+        [AllowAnonymous]
+        public JsonResult EmailAlreadyExists(RegisterViewModel user, string email)
+        {
+            return Json(!db.user.Any(u => u.email == email), JsonRequestBehavior.AllowGet);
         }
 
         //GET: Account/ResetPassword

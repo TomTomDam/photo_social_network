@@ -1,7 +1,7 @@
-﻿$(document).ready(function() {
-    console.log("Document ready!");
-});
+﻿/* $('#registerButton').click(function (e) {
+    e.preventDefault();
 
-setTimeout(function() {
-    window.location.replace('@Url.Action("Login", "Account")');
-}, 3000);
+    setTimeout(function () {
+        window.location.href = 'Login';
+    }, 3000);
+}); */
