@@ -19,8 +19,8 @@ namespace SocialNetwork.Models
 
         [Required(ErrorMessage = "This field is required.")]
         [System.Web.Mvc.Remote("EmailAlreadyExists", "Account", ErrorMessage = ("This {0} is already in use. Please use a different {0}."))]
-        //[RegularExpression("",ErrorMessage = "This email is not valid.")]
-        [EmailAddress(ErrorMessage = "This email is not valid.")]
+        //[RegularExpression("",ErrorMessage = "This is not a valid email.")]
+        [EmailAddress(ErrorMessage = "This is not a valid email.")]
         [Display(Name = "Email")]
         public string email { get; set; }
 
@@ -42,32 +42,32 @@ namespace SocialNetwork.Models
 
     }
 
-    public class UsernameEmailAlreadyExists : ValidationAttribute
-    {
-        private AccountContext db = new AccountContext();
+    //public class UsernameEmailAlreadyExists : ValidationAttribute
+    //{
+    //    private AccountContext db = new AccountContext();
 
-        public UsernameEmailAlreadyExists() : base("This {0} already exists. Please use a different {0}.")
-        {
+    //    public UsernameEmailAlreadyExists() : base("This {0} already exists. Please use a different {0}.")
+    //    {
 
-        }
+    //    }
 
-        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
-        {
-            var username = db.user.Where(u => u.username == value.ToString()).FirstOrDefault();
-            var email = db.user.Where(u => u.email == value.ToString()).FirstOrDefault();
+    //    protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+    //    {
+    //        var username = db.user.Where(u => u.username == value.ToString()).FirstOrDefault();
+    //        var email = db.user.Where(u => u.email == value.ToString()).FirstOrDefault();
 
-            if (username == null)
-            {
-                return ValidationResult.Success;
-            }
-            else if (email == null)
-            {
-                return ValidationResult.Success;
-            }
-            else
-            {
-                return new ValidationResult("");
-            }
-        }
-    }
+    //        if (username == null)
+    //        {
+    //            return ValidationResult.Success;
+    //        }
+    //        else if (email == null)
+    //        {
+    //            return ValidationResult.Success;
+    //        }
+    //        else
+    //        {
+    //            return new ValidationResult("");
+    //        }
+    //    }
+    //}
 }

@@ -172,6 +172,7 @@ namespace SocialNetwork.Controllers
         }
 
         //GET: Account/ResetPassword
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult ResetPassword(ResetPasswordMessage message)
         {
@@ -191,6 +192,7 @@ namespace SocialNetwork.Controllers
         }
 
         //POST: Account/ResetPassword
+        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult ResetPassword(int? id, ResetPasswordViewModel user, ResetPasswordMessage message) //ResetPasswordViewModel user

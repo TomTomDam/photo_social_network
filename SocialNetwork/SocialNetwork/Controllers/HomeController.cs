@@ -15,14 +15,14 @@ namespace SocialNetwork.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "The application's tech stack and application features.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Let's get in touch!";
 
             return View();
         }
