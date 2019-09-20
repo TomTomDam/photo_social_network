@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -17,8 +18,45 @@ namespace SocialNetwork.Controllers
         // GET: Photos
         public ActionResult Index()
         {
-            return View(db.Photos.ToList());
+            return View("Index", db.Photos.ToList());
         }
+
+        //GET: Photos/PhotoGallery
+        public ActionResult PhotoGallery(int num = 0)
+        {
+            //In the view, display the latest photos when num is greater than 0
+            //Otherwise, display all photos
+            List<Photo> photos;
+
+            if (num == 0)
+            {
+                photos = db.Photos.ToList();
+            }
+            else
+            {
+                photos = db.Photos
+                    .OrderByDescending(p => p.createdDate)
+                    .Take(num).ToList();
+            }
+
+            return View(photos);
+        }
+
+        //Grabs the photo file to its associated photo ID
+        public FileContentResult GetImage(int photoId)
+        {
+            Photo requestedPhoto = db.Photos.FirstOrDefault(p => p.photoId == photoId);
+
+            if (requestedPhoto != null)
+            {
+                return File(requestedPhoto.photoFile, requestedPhoto.imageMimeType);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
 
         // GET: Photos/Details/5
         public ActionResult Details(int? id)
@@ -27,29 +65,50 @@ namespace SocialNetwork.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Photo photo = db.Photos.Find(id);
+
             if (photo == null)
             {
                 return HttpNotFound();
             }
-            return View(photo);
+
+            return View("Details", photo);
         }
 
         // GET: Photos/Create
         public ActionResult Create()
         {
+            Photo photo = new Photo
+            {
+                username = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(Session["username"].ToString()),
+                createdDate = DateTime.Today,
+                modifiedDate = DateTime.Today
+            };
+
             return View();
         }
 
         // POST: Photos/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "photoId,title,photoFile,imageMimeType,description,username,createdDate,modifiedDate")] Photo photo)
+        public ActionResult Create([Bind(Include = "photoId,title,photoFile,imageMimeType,description,username,createdDate,modifiedDate")] Photo photo, HttpPostedFileBase image)
         {
+            photo.username = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(Session["username"].ToString());
+            photo.createdDate = DateTime.Today;
+            photo.modifiedDate = DateTime.Today;
+
+            
             if (ModelState.IsValid)
             {
+                //Read photo content type and file size, then save the photo
+                if (image != null)
+                {
+                    photo.imageMimeType = image.ContentType;
+                    photo.photoFile = new byte[image.ContentLength];
+                    image.InputStream.Read(photo.photoFile, 0, image.ContentLength);
+                }
+
                 db.Photos.Add(photo);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -74,8 +133,6 @@ namespace SocialNetwork.Controllers
         }
 
         // POST: Photos/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "photoId,title,photoFile,imageMimeType,description,username,createdDate,modifiedDate")] Photo photo)
@@ -96,7 +153,9 @@ namespace SocialNetwork.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Photo photo = db.Photos.Find(id);
+
             if (photo == null)
             {
                 return HttpNotFound();

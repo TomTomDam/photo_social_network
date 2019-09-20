@@ -22,11 +22,11 @@ namespace SocialNetwork.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            var login = db.user
-                .Include(u => u.id)
-                .Include(u => u.username)
-                .Include(u => u.password)
-                .Include(u => u.rememberMe);
+            //var login = db.user
+            //    .Include(u => u.id)
+            //    .Include(u => u.username)
+            //    .Include(u => u.password)
+            //    .Include(u => u.rememberMe);
 
             return View();
         }
