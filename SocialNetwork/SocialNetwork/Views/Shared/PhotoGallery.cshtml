@@ -1,64 +1,48 @@
 ﻿@model IEnumerable<SocialNetwork.Models.Photo>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@{ Layout = null;}
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.photoFile)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.imageMimeType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.createdDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.modifiedDate)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
+@foreach (var item in Model)
+{
+    <div class="" id="photo-gallery">
+        <h3>
             @Html.DisplayFor(modelItem => item.title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.photoFile)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.imageMimeType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.createdDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.modifiedDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.photoId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.photoId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.photoId })
-        </td>
-    </tr>
-}
+        </h3>
 
-</table>
+        <div class="photo-display">
+            <img class="" src="@Url.Action("GetImage", "Photo", new { photoId = item.photoId})" />
+        </div>
+
+        <div class="" id="photo-data">
+            <div>
+                <div class="" id="display-label">
+                    Uploaded by:
+                </div>
+                <div class="display-field">
+                    @Html.DisplayFor(modelItem => item.username)
+                </div>
+            </div>
+
+            <div>
+                <div class="" id="display-label">
+                    @Html.DisplayNameFor(model => model.createdDate):
+                </div>
+                <div class="display-field">
+                    @Html.DisplayFor(modelItem => item.createdDate)
+                </div>
+            </div>
+
+            <div>
+                <div class="" id="display-label">
+                    @Html.DisplayNameFor(model => model.modifiedDate):
+                </div>
+                <div class="display-field">
+                    @Html.DisplayFor(modelItem => item.modifiedDate)
+                </div>
+            </div>
+        </div>
+
+        @Html.ActionLink("Details", "Details", new { id = item.photoId })
+        @Html.ActionLink("Delete", "Delete", new { id = item.photoId })
+    </div>
+}

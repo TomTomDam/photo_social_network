@@ -11,7 +11,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Account</h4>
+        <h4>Create a free account to start uploading or commenting on photos.</h4>
         <hr />
         @Html.HiddenFor(model => model.id)
 
@@ -66,3 +66,4 @@
 @*@Scripts.Render("~/Scripts/script.js")*@
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+@RenderSection("scripts", required: false)

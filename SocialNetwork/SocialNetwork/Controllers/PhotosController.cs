@@ -22,6 +22,8 @@ namespace SocialNetwork.Controllers
         }
 
         //GET: Photos/PhotoGallery
+        //Render a partial view to display photo gallery in Home/Index page
+        [ChildActionOnly]
         public ActionResult PhotoGallery(int num = 0)
         {
             //In the view, display the latest photos when num is greater than 0
@@ -39,7 +41,7 @@ namespace SocialNetwork.Controllers
                     .Take(num).ToList();
             }
 
-            return View(photos);
+            return PartialView("PhotoGallery", photos);
         }
 
         //Grabs the photo file to its associated photo ID
@@ -56,7 +58,6 @@ namespace SocialNetwork.Controllers
                 return null;
             }
         }
-
 
         // GET: Photos/Details/5
         public ActionResult Details(int? id)

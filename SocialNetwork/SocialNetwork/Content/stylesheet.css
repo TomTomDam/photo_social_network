@@ -1,1 +1,24 @@
-﻿
+﻿#photo-gallery{
+    margin: 10px 50px;
+}
+
+#photo-gallery img{
+    width: 230px;
+    padding: 5px;
+    transition: 1s;
+}
+
+#photo-gallery img:hover{
+    transform: scale(1.1);
+}
+
+#display-label {
+    display: inline-block;
+    width: 150px;
+    margin: 2px;
+}
+
+#display-field {
+    width: 350px;
+    margin: 2px;
+}
