@@ -1,9 +1,10 @@
 ﻿@{
     ViewBag.Title = "Welcome to PhotoSocial";
 }
-
-<p class="lead">Create an account to instantly share your favourite moments with everyone.</p>
+<p class="page-header lead">Create an account to instantly share your favourite moments with everyone.</p>
 
 <h2>Latest Photos:</h2>
 
-@Html.Action("PhotoGallery", "Photos", new { num = 3})
+@Html.Action("PhotoGallery", "Photos", new { num = 3 })
+
+@*@Html.Partial("~/Views/Shared/_PhotoGallery.cshtml")*@

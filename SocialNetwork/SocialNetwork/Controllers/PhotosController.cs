@@ -21,8 +21,7 @@ namespace SocialNetwork.Controllers
             return View("Index", db.Photos.ToList());
         }
 
-        //GET: Photos/PhotoGallery
-        //Render a partial view to display photo gallery in Home/Index page
+        //GET: Render _PhotoGallery Partial View to display photo gallery in Home/Index page
         [ChildActionOnly]
         public ActionResult PhotoGallery(int num = 0)
         {
@@ -41,7 +40,7 @@ namespace SocialNetwork.Controllers
                     .Take(num).ToList();
             }
 
-            return PartialView("PhotoGallery", photos);
+            return PartialView("~/Views/Shared/_PhotoGallery.cshtml", photos);
         }
 
         //Grabs the photo file to its associated photo ID
@@ -177,10 +176,7 @@ namespace SocialNetwork.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
-            {
-                db.Dispose();
-            }
+            db.Dispose();
             base.Dispose(disposing);
         }
     }

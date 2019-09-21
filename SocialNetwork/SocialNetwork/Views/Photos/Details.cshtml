@@ -1,7 +1,7 @@
 ﻿@model SocialNetwork.Models.Photo
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.title;
 }
 
 <h2>Details</h2>
@@ -68,6 +68,9 @@
 
     </dl>
 </div>
+
+@Html.Action("CommentPhoto", "Comments", new { photoId = Model.photoId })
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.photoId }) |
     @Html.ActionLink("Back to List", "Index")

@@ -14,7 +14,5 @@ namespace SocialNetwork.Models
         }
 
         public DbSet<Account> user { get; set; }
-
-        public System.Data.Entity.DbSet<SocialNetwork.Models.LoginViewModel> LoginViewModels { get; set; }
     }
 }

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<SocialNetwork.Models.Photo>
+
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("PhotoGallery", "Photos", FormMethod.Get))
+{
+    foreach (var item in Model)
+    {
+
+        <div class="" id="photo-gallery">
+
+            <h3>
+                @Html.DisplayFor(modelItem => item.title)
+            </h3>
+
+            @if (item.photoFile != null)
+            {
+                <div class="photo-display">
+                    <img class="" src="@Url.Action("GetImage", "Photo", new { photoId = item.photoId})" />
+                </div>
+            }
+
+            <div class="" id="photo-data">
+                <div>
+                    <span class="" id="display-label">
+                        Uploaded by:
+                    </span>
+                    <span class="display-field">
+                        @Html.DisplayFor(model => item.username)
+                    </span>
+                </div>
+
+                <div>
+                    <span class="" id="display-label">
+                        @Html.DisplayNameFor(model => model.createdDate):
+                    </span>
+                    <span class="display-field">
+                        @Html.DisplayFor(model => item.createdDate)
+                    </span>
+                </div>
+
+                <div>
+                    <span class="" id="display-label">
+                        @Html.DisplayNameFor(model => model.modifiedDate):
+                    </span>
+                    <spoan class="display-field">
+                        @Html.DisplayFor(model => item.modifiedDate)
+                    </spoan>
+                </div>
+            </div>
+
+            @Html.ActionLink("Details", "Details", new { id = item.photoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.photoId })
+        </div>
+    }
+
+<p>Good morning</p>
+}
