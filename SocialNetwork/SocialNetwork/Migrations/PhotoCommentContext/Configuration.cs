@@ -1,24 +1,26 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.IO;
 using System.Linq;
 using System.Web;
+using SocialNetwork.Models;
+using System.Drawing;
+using System.Web.Hosting;
+using System.Reflection;
 
-namespace SocialNetwork.Models
+namespace SocialNetwork.Migrations.PhotoCommentContext
 {
-    public class PhotoSocialNetwork_Initializer : DropCreateDatabaseIfModelChanges<PhotoSocialNetwork_DB>
+    internal sealed class Configuration : DbMigrationsConfiguration<SocialNetwork.Models.PhotoSocialNetwork_DB>
     {
-        public override void InitializeDatabase(PhotoSocialNetwork_DB context)
+        public Configuration()
         {
-            context.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction
-            , string.Format("ALTER DATABASE {0} SET SINGLE_USER WITH ROLLBACK IMMEDIATE", context.Database.Connection.Database));
-
-
-            base.InitializeDatabase(context);
+            AutomaticMigrationsEnabled = false;
+            MigrationsDirectory = @"Migrations\PhotoCommentContext";
         }
 
-        protected override void Seed(PhotoSocialNetwork_DB context)
+        protected override void Seed(SocialNetwork.Models.PhotoSocialNetwork_DB context)
         {
             base.Seed(context);
 
@@ -55,6 +57,7 @@ namespace SocialNetwork.Models
                     modifiedDate = DateTime.Today,
                 }
             };
+
             photos.ForEach(s => context.Photos.Add(s));
             context.SaveChanges();
 
@@ -91,14 +94,43 @@ namespace SocialNetwork.Models
 
         private byte[] getFileBytes(string path)
         {
-            FileStream file = new FileStream(HttpRuntime.AppDomainAppPath + path, FileMode.Open);
+            FileStream fileOnDisk = new FileStream(HttpRuntime.AppDomainAppPath + path, FileMode.Open);
             byte[] fileBytes;
-            using (BinaryReader br = new BinaryReader(file))
+            using (BinaryReader br = new BinaryReader(fileOnDisk))
             {
-                fileBytes = br.ReadBytes((int)file.Length);
+                fileBytes = br.ReadBytes((int)fileOnDisk.Length);
             }
-
             return fileBytes;
         }
+
+        private string MapPath(string seedFile)
+        {
+            if (HttpContext.Current == null)
+            {
+                return HostingEnvironment.MapPath(seedFile);
+            }
+
+            var absolutePath = new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath;
+            var directoryName = Path.GetDirectoryName(absolutePath);
+            var path = Path.Combine(directoryName + ".." + seedFile.TrimStart('~').Replace('/', '\\'));
+
+            //using (var streamReader = new StreamReader(MapPath("~/Images/excited_doggo.gif"))) { } Embed Seed() method with using statement
+
+            return path;
+        }
+
+        //private byte[] imageToByteArray(Image imageIn)
+        //{
+        //    MemoryStream ms = new MemoryStream();
+        //    imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+        //    return ms.ToArray();
+        //}
+
+        //private Image byteToImageArray(byte[] byteArrayIn)
+        //{
+        //    MemoryStream ms = new MemoryStream(byteArrayIn);
+        //    Image returnImage = Image.FromStream(ms);
+        //    return returnImage;
+        //}
     }
 }

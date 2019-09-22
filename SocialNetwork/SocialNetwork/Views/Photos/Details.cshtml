@@ -69,7 +69,7 @@
     </dl>
 </div>
 
-@Html.Action("CommentPhoto", "Comments", new { photoId = Model.photoId })
+@Html.Action("_CommentPhoto", "Comments", new { photoId = Model.photoId })
 
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.photoId }) |
