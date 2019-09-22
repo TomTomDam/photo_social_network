@@ -16,7 +16,7 @@ namespace SocialNetwork.Models
 
         [Display(Name = "Picture")]
         [MaxLength]
-        public byte[] photoFile { get; set; }
+        public string photoFilePath { get; set; }
 
         [HiddenInput(DisplayValue = false)]
         public string imageMimeType { get; set; }

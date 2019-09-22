@@ -19,11 +19,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.photoFile)
+            @Html.DisplayNameFor(model => model.photoFilePath)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.photoFile)
+            @Html.DisplayFor(model => model.photoFilePath)
         </dd>
 
         <dt>
@@ -69,7 +69,7 @@
     </dl>
 </div>
 
-@Html.Action("_CommentPhoto", "Comments", new { photoId = Model.photoId })
+@Html.Action("CommentPhoto", "Comments", new { photoId = Model.photoId })
 
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.photoId }) |

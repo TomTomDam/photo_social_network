@@ -44,13 +44,13 @@ namespace SocialNetwork.Controllers
         }
 
         //Grabs the photo file to its associated photo ID
-        public FileContentResult GetImage(int photoId)
+        public ActionResult GetImage(int photoId)
         {
             Photo requestedPhoto = db.Photos.FirstOrDefault(p => p.photoId == photoId);
 
             if (requestedPhoto != null)
             {
-                return File(requestedPhoto.photoFile, requestedPhoto.imageMimeType);
+                return File(requestedPhoto.photoFilePath, requestedPhoto.imageMimeType);
             }
             else
             {
@@ -102,12 +102,12 @@ namespace SocialNetwork.Controllers
             if (ModelState.IsValid)
             {
                 //Read photo content type and file size, then save the photo
-                if (image != null)
-                {
-                    photo.imageMimeType = image.ContentType;
-                    photo.photoFile = new byte[image.ContentLength];
-                    image.InputStream.Read(photo.photoFile, 0, image.ContentLength);
-                }
+                //if (image != null)
+                //{
+                //    photo.imageMimeType = image.ContentType;
+                //    photo.photoFilePath = image.ContentLength;
+                //    image.InputStream.Read(photo.photoFilePath, 0, image.ContentLength);
+                //}
 
                 db.Photos.Add(photo);
                 db.SaveChanges();

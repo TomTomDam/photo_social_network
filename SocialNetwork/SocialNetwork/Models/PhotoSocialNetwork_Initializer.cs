@@ -29,7 +29,7 @@ namespace SocialNetwork.Models
                     title = "Dog",
                     description = "Look how excited Buddy gets when I tell him we are going for a walk!",
                     username = "John Shepard",
-                    photoFile = getFileBytes("\\Images\\excited_doggo.gif"),
+                    photoFilePath = "\\Images\\excited_doggo.gif",
                     imageMimeType = "image/gif",
                     createdDate = DateTime.Today,
                     modifiedDate = DateTime.Today,
@@ -39,7 +39,7 @@ namespace SocialNetwork.Models
                     title = "Flower",
                     description = "The Lily of the Valley, a flower that represents happiness.",
                     username = "Jane Doe",
-                    photoFile = getFileBytes("\\Images\\lilyofthevalley.jpg"),
+                    photoFilePath = "\\Images\\lilyofthevalley.jpg",
                     imageMimeType = "image/jpeg",
                     createdDate = DateTime.Today,
                     modifiedDate = DateTime.Today,
@@ -49,7 +49,7 @@ namespace SocialNetwork.Models
                     title = "River",
                     description = "Would love to visit the Yangtze River someday!",
                     username = "John Smith",
-                    photoFile = getFileBytes("\\Images\\yangtze_river.jpg"),
+                    photoFilePath = "\\Images\\yangtze_river.jpg",
                     imageMimeType = "image/jpeg",
                     createdDate = DateTime.Today,
                     modifiedDate = DateTime.Today,
@@ -87,18 +87,6 @@ namespace SocialNetwork.Models
             };
             comments.ForEach(s => context.Comments.Add(s));
             context.SaveChanges();
-        }
-
-        private byte[] getFileBytes(string path)
-        {
-            FileStream file = new FileStream(HttpRuntime.AppDomainAppPath + path, FileMode.Open);
-            byte[] fileBytes;
-            using (BinaryReader br = new BinaryReader(file))
-            {
-                fileBytes = br.ReadBytes((int)file.Length);
-            }
-
-            return fileBytes;
         }
     }
 }

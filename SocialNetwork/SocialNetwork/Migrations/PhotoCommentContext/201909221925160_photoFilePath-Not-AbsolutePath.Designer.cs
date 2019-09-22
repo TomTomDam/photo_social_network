@@ -7,13 +7,13 @@ namespace SocialNetwork.Migrations.PhotoCommentContext
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Initial : IMigrationMetadata
+    public sealed partial class photoFilePathNotAbsolutePath : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(photoFilePathNotAbsolutePath));
         
         string IMigrationMetadata.Id
         {
-            get { return "201909221318352_Initial"; }
+            get { return "201909221925160_photoFilePath-Not-AbsolutePath"; }
         }
         
         string IMigrationMetadata.Source

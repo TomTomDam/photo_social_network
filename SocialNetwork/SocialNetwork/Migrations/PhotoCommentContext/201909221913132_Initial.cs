@@ -26,7 +26,7 @@ namespace SocialNetwork.Migrations.PhotoCommentContext
                     {
                         photoId = c.Int(nullable: false, identity: true),
                         title = c.String(nullable: false),
-                        photoFile = c.Binary(),
+                        photoFilePath = c.String(),
                         imageMimeType = c.String(),
                         description = c.String(),
                         username = c.String(),

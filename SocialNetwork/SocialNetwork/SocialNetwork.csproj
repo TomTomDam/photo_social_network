@@ -206,14 +206,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\AccountContext\201909221318516_Initial.cs" />
-    <Compile Include="Migrations\AccountContext\201909221318516_Initial.Designer.cs">
-      <DependentUpon>201909221318516_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\AccountContext\201909221912445_Initial.cs" />
+    <Compile Include="Migrations\AccountContext\201909221912445_Initial.Designer.cs">
+      <DependentUpon>201909221912445_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AccountContext\Configuration.cs" />
-    <Compile Include="Migrations\PhotoCommentContext\201909221318352_Initial.cs" />
-    <Compile Include="Migrations\PhotoCommentContext\201909221318352_Initial.Designer.cs">
-      <DependentUpon>201909221318352_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\PhotoCommentContext\201909221913132_Initial.cs" />
+    <Compile Include="Migrations\PhotoCommentContext\201909221913132_Initial.Designer.cs">
+      <DependentUpon>201909221913132_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\PhotoCommentContext\201909221925160_photoFilePath-Not-AbsolutePath.cs" />
+    <Compile Include="Migrations\PhotoCommentContext\201909221925160_photoFilePath-Not-AbsolutePath.Designer.cs">
+      <DependentUpon>201909221925160_photoFilePath-Not-AbsolutePath.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\PhotoCommentContext\Configuration.cs" />
     <Compile Include="Models\Account\Account.cs" />
@@ -304,11 +308,14 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\AccountContext\201909221318516_Initial.resx">
-      <DependentUpon>201909221318516_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\AccountContext\201909221912445_Initial.resx">
+      <DependentUpon>201909221912445_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\PhotoCommentContext\201909221318352_Initial.resx">
-      <DependentUpon>201909221318352_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\PhotoCommentContext\201909221913132_Initial.resx">
+      <DependentUpon>201909221913132_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\PhotoCommentContext\201909221925160_photoFilePath-Not-AbsolutePath.resx">
+      <DependentUpon>201909221925160_photoFilePath-Not-AbsolutePath.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

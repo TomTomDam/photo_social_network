@@ -31,7 +31,7 @@ namespace SocialNetwork.Migrations.PhotoCommentContext
                     title = "Dog",
                     description = "Look how excited Buddy gets when I tell him we are going for a walk!",
                     username = "John Shepard",
-                    photoFile = getFileBytes("\\Images\\excited_doggo.gif"),
+                    photoFilePath = "excited_doggo.gif",
                     imageMimeType = "image/gif",
                     createdDate = DateTime.Today,
                     modifiedDate = DateTime.Today,
@@ -41,7 +41,7 @@ namespace SocialNetwork.Migrations.PhotoCommentContext
                     title = "Flower",
                     description = "The Lily of the Valley, a flower that represents happiness.",
                     username = "Jane Doe",
-                    photoFile = getFileBytes("\\Images\\lilyofthevalley.jpg"),
+                    photoFilePath = "lilyofthevalley.jpg",
                     imageMimeType = "image/jpeg",
                     createdDate = DateTime.Today,
                     modifiedDate = DateTime.Today,
@@ -51,7 +51,7 @@ namespace SocialNetwork.Migrations.PhotoCommentContext
                     title = "River",
                     description = "Would love to visit the Yangtze River someday!",
                     username = "John Smith",
-                    photoFile = getFileBytes("\\Images\\yangtze_river.jpg"),
+                    photoFilePath = "yangtze_river.jpg",
                     imageMimeType = "image/jpeg",
                     createdDate = DateTime.Today,
                     modifiedDate = DateTime.Today,
@@ -92,45 +92,15 @@ namespace SocialNetwork.Migrations.PhotoCommentContext
             context.SaveChanges();
         }
 
-        private byte[] getFileBytes(string path)
-        {
-            FileStream fileOnDisk = new FileStream(HttpRuntime.AppDomainAppPath + path, FileMode.Open);
-            byte[] fileBytes;
-            using (BinaryReader br = new BinaryReader(fileOnDisk))
-            {
-                fileBytes = br.ReadBytes((int)fileOnDisk.Length);
-            }
-            return fileBytes;
-        }
-
-        private string MapPath(string seedFile)
-        {
-            if (HttpContext.Current == null)
-            {
-                return HostingEnvironment.MapPath(seedFile);
-            }
-
-            var absolutePath = new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath;
-            var directoryName = Path.GetDirectoryName(absolutePath);
-            var path = Path.Combine(directoryName + ".." + seedFile.TrimStart('~').Replace('/', '\\'));
-
-            //using (var streamReader = new StreamReader(MapPath("~/Images/excited_doggo.gif"))) { } Embed Seed() method with using statement
-
-            return path;
-        }
-
-        //private byte[] imageToByteArray(Image imageIn)
+        //private byte[] getFileBytes(string path)
         //{
-        //    MemoryStream ms = new MemoryStream();
-        //    imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-        //    return ms.ToArray();
-        //}
-
-        //private Image byteToImageArray(byte[] byteArrayIn)
-        //{
-        //    MemoryStream ms = new MemoryStream(byteArrayIn);
-        //    Image returnImage = Image.FromStream(ms);
-        //    return returnImage;
+        //    FileStream fileOnDisk = new FileStream(HttpRuntime.AppDomainAppPath + path, FileMode.Open);
+        //    byte[] fileBytes;
+        //    using (BinaryReader br = new BinaryReader(fileOnDisk))
+        //    {
+        //        fileBytes = br.ReadBytes((int)fileOnDisk.Length);
+        //    }
+        //    return fileBytes;
         //}
     }
 }
