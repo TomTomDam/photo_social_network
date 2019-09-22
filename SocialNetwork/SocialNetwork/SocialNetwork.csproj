@@ -219,6 +219,14 @@
     <Compile Include="Migrations\PhotoCommentContext\201909221925160_photoFilePath-Not-AbsolutePath.Designer.cs">
       <DependentUpon>201909221925160_photoFilePath-Not-AbsolutePath.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\PhotoCommentContext\201909221958189_Added-PhotoID.cs" />
+    <Compile Include="Migrations\PhotoCommentContext\201909221958189_Added-PhotoID.Designer.cs">
+      <DependentUpon>201909221958189_Added-PhotoID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\PhotoCommentContext\201909222014135_Repopulate-Photos-Comments.cs" />
+    <Compile Include="Migrations\PhotoCommentContext\201909222014135_Repopulate-Photos-Comments.Designer.cs">
+      <DependentUpon>201909222014135_Repopulate-Photos-Comments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\PhotoCommentContext\Configuration.cs" />
     <Compile Include="Models\Account\Account.cs" />
     <Compile Include="Models\Account\AccountContext.cs" />
@@ -316,6 +324,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\PhotoCommentContext\201909221925160_photoFilePath-Not-AbsolutePath.resx">
       <DependentUpon>201909221925160_photoFilePath-Not-AbsolutePath.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\PhotoCommentContext\201909221958189_Added-PhotoID.resx">
+      <DependentUpon>201909221958189_Added-PhotoID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\PhotoCommentContext\201909222014135_Repopulate-Photos-Comments.resx">
+      <DependentUpon>201909222014135_Repopulate-Photos-Comments.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -16,19 +16,19 @@ namespace SocialNetwork.Controllers
         private PhotoSocialNetwork_DB db = new PhotoSocialNetwork_DB();
 
         //GET: Comments Partial View within the Photos/Details view
-        [HttpGet]
-        public PartialViewResult CommentPhoto(int photoId)
+        [ChildActionOnly]
+        public PartialViewResult _CommentPhoto(int photoId)
         {
             var comments = db.Comments.Where(c => c.photoId == photoId).ToList();
 
             ViewBag.PhotoId = photoId;
 
-            return PartialView(comments);
+            return PartialView(comments.ToList());
         }
 
         //POST: Creates comment
         [HttpPost]
-        public PartialViewResult CommentPhoto(Comment comment, int photoId)
+        public PartialViewResult _CommentPhoto(Comment comment, int photoId)
         {
             comment.username = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(Session["username"].ToString());
 
@@ -39,7 +39,7 @@ namespace SocialNetwork.Controllers
 
             ViewBag.PhotoId = photoId;
 
-            return PartialView("_CommentPhoto", comments);
+            return PartialView("_CommentPhoto.cshtml", comments.ToList());
         }
 
         // GET: Comments/Create
@@ -54,7 +54,7 @@ namespace SocialNetwork.Controllers
 
             ViewBag.PhotoId = _photoId;
 
-            return PartialView("_PostComment");
+            return PartialView("~/Views/Shared/_PostComment.cshtml");
         }
 
         // POST: Comments/Create

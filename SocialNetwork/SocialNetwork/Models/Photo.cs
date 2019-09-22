@@ -9,9 +9,12 @@ namespace SocialNetwork.Models
 {
     public class Photo
     {
+        [Key]
+        [HiddenInput]
         public int photoId { get; set; }
 
         [Required]
+        [Display(Name = "Title")]
         public string title { get; set; }
 
         [Display(Name = "Picture")]
@@ -19,11 +22,14 @@ namespace SocialNetwork.Models
         public string photoFilePath { get; set; }
 
         [HiddenInput(DisplayValue = false)]
+        [Display(Name = "Image MIME Type")]
         public string imageMimeType { get; set; }
 
         [DataType(DataType.MultilineText)]
+        [Display(Name = "Description")]
         public string description { get; set; }
 
+        [Display(Name = "Username")]
         public string username { get; set; }
 
         [DataType(DataType.DateTime)]

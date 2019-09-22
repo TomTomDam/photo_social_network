@@ -22,3 +22,8 @@
     width: 350px;
     margin: 2px;
 }
+
+.photo-display-img {
+    width: 250px;
+    max-height: 300px;
+}

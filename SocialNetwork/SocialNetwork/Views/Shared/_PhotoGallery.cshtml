@@ -4,6 +4,8 @@
     Layout = null;
 }
 
+@Scripts.Render("~/Content/css")
+
 @foreach (var item in Model)
 {
 
@@ -17,7 +19,7 @@
         {
             <div class="photo-display">
                 @*<img class="" src="@Url.Action("GetImage", "Photo", new { photoId = item.photoId})" />*@
-                <img class="" src="~/Images/@(item.photoFilePath)"/>
+                <img class="photo-display-img" src="~/Images/@(item.photoFilePath)"/>
             </div>
         }
 
@@ -50,6 +52,6 @@
             </div>
         </div>
 
-        @Html.ActionLink("Details", "Details", new { id = item.photoId }) |
+        @Html.ActionLink("Details", "Details", "Photos", new { id = item.photoId }, null )
     </div>
 }

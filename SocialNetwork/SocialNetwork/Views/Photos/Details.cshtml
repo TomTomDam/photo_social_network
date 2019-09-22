@@ -4,10 +4,16 @@
     ViewBag.Title = Model.title;
 }
 
-<h2>Details</h2>
+<h2>@Model.title</h2>
+
+@if (Model.photoFilePath != null)
+{
+    <div class="">
+        <img src="~/Images/@(Model.photoFilePath)"/>
+    </div>
+}
 
 <div>
-    <h4>Photo</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -16,22 +22,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.photoFilePath)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.photoFilePath)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.imageMimeType)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.imageMimeType)
         </dd>
 
         <dt>
@@ -69,9 +59,8 @@
     </dl>
 </div>
 
-@Html.Action("CommentPhoto", "Comments", new { photoId = Model.photoId })
+@Html.Action("_CommentPhoto", "Comments", new { photoId = Model.photoId })
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.photoId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

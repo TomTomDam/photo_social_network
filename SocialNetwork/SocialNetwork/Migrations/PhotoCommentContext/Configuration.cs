@@ -28,6 +28,7 @@ namespace SocialNetwork.Migrations.PhotoCommentContext
             {
                 new Photo
                 {
+                    photoId = 1,
                     title = "Dog",
                     description = "Look how excited Buddy gets when I tell him we are going for a walk!",
                     username = "John Shepard",
@@ -38,6 +39,7 @@ namespace SocialNetwork.Migrations.PhotoCommentContext
                 },
                 new Photo
                 {
+                    photoId = 2,
                     title = "Flower",
                     description = "The Lily of the Valley, a flower that represents happiness.",
                     username = "Jane Doe",
@@ -48,6 +50,7 @@ namespace SocialNetwork.Migrations.PhotoCommentContext
                 },
                 new Photo
                 {
+                    photoId = 3,
                     title = "River",
                     description = "Would love to visit the Yangtze River someday!",
                     username = "John Smith",
@@ -65,24 +68,28 @@ namespace SocialNetwork.Migrations.PhotoCommentContext
             {
                 new Comment
                 {
+                    commentId = 1,
                     photoId = 1,
                     username = "Thomas Dam",
                     text = "My reaction when I get pizza for dinner.",
                 },
                 new Comment
                 {
+                    commentId = 2,
                     photoId = 1,
                     username = "Geralt Rivia",
                     text = "What a happy pupper!",
                 },
                 new Comment
                 {
+                    commentId = 3,
                     photoId = 2,
                     username = "Mr A. Anderson",
                     text = "Great picture Jane!",
                 },
                 new Comment
                 {
+                    commentId = 4,
                     photoId = 3,
                     username = "Rick Morty",
                     text = "Me too!",
