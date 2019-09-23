@@ -79,20 +79,29 @@ namespace SocialNetwork.Controllers
         // GET: Photos/Create
         public ActionResult Create()
         {
-            Photo photo = new Photo
+            if (Session["username"] != null)
             {
-                username = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(Session["username"].ToString()),
-                createdDate = DateTime.Today,
-                modifiedDate = DateTime.Today
-            };
+                Photo newPhoto = new Photo
+                {
+                    username = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(Session["username"].ToString()),
+                    createdDate = DateTime.Today,
+                    modifiedDate = DateTime.Today
+                };
 
-            return View();
+                return View(newPhoto);
+            }
+            else
+            {
+                TempData["LoginMessage"] = "You must be logged in to do that.";
+
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         // POST: Photos/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "photoId,title,photoFile,imageMimeType,description,username,createdDate,modifiedDate")] Photo photo, HttpPostedFileBase image)
+        public ActionResult Create(Photo photo, HttpPostedFileBase image)
         {
             photo.username = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(Session["username"].ToString());
             photo.createdDate = DateTime.Today;
@@ -102,12 +111,12 @@ namespace SocialNetwork.Controllers
             if (ModelState.IsValid)
             {
                 //Read photo content type and file size, then save the photo
-                //if (image != null)
-                //{
-                //    photo.imageMimeType = image.ContentType;
-                //    photo.photoFilePath = image.ContentLength;
-                //    image.InputStream.Read(photo.photoFilePath, 0, image.ContentLength);
-                //}
+                if (image != null)
+                {
+                    photo.imageMimeType = image.ContentType;
+                    photo.photoFilePath = image.FileName;
+                    //image.InputStream.Read(photo.photoFilePath, 0, image.ContentLength);
+                }
 
                 db.Photos.Add(photo);
                 db.SaveChanges();
