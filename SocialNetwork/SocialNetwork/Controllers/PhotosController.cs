@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -107,15 +108,27 @@ namespace SocialNetwork.Controllers
             photo.createdDate = DateTime.Today;
             photo.modifiedDate = DateTime.Today;
 
-            
             if (ModelState.IsValid)
             {
                 //Read photo content type and file size, then save the photo
                 if (image != null)
                 {
                     photo.imageMimeType = image.ContentType;
-                    photo.photoFilePath = image.FileName;
+
+                    var filePath = Path.Combine(Server.MapPath("~/Images/"), image.FileName);
+                    photo.photoFilePath = filePath;
+
                     //image.InputStream.Read(photo.photoFilePath, 0, image.ContentLength);
+
+                    using (StreamReader sr = System.IO.File.OpenText(filePath))
+                    {
+
+                    }
+
+                    byte[] uploadedImage = new byte[image.InputStream.Length];
+                    image.InputStream.Read(uploadedImage, 0, uploadedImage.Length);
+
+
                 }
 
                 db.Photos.Add(photo);

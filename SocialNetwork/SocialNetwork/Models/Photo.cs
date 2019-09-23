@@ -21,6 +21,10 @@ namespace SocialNetwork.Models
         [MaxLength]
         public string photoFilePath { get; set; }
 
+        //[Display(Name = "Upload Image")]
+        //[MaxLength]
+        //public HttpPostedFileBase photoImage { get; set; }
+
         [HiddenInput(DisplayValue = false)]
         [Display(Name = "Image MIME Type")]
         public string imageMimeType { get; set; }

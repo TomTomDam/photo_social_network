@@ -2,16 +2,6 @@
     margin: 10px 50px;
 }
 
-#photo-gallery img{
-    width: 230px;
-    padding: 5px;
-    transition: 1s;
-}
-
-#photo-gallery img:hover{
-    transform: scale(1.1);
-}
-
 #display-label {
     display: inline-block;
     width: 150px;
@@ -24,6 +14,13 @@
 }
 
 .photo-display-img {
-    width: 250px;
-    max-height: 300px;
+    width: 550px;
+    max-height: 600px;
+    padding: 5px;
+    transition: 1s;
+}
+
+
+.photo-display-img :hover {
+    transform: scale(1.1);
 }
