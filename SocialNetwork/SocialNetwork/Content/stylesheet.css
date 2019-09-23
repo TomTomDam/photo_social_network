@@ -1,5 +1,33 @@
-﻿#photo-gallery{
-    margin: 10px 50px;
+﻿* {
+    box-sizing: border-box;
+}
+
+.photo-container {
+    margin: 20px 10px;
+}
+
+.photo-container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+#photo-gallery {
+    margin: 10px 20px;
+    padding: 5px;
+    float: left;
+    width: 33.33%;
+}
+
+#photo-gallery img {
+    width: 350px;
+    height: 400px;
+    padding: 5px;
+    transition: 1s;
+}
+
+#photo-gallery img:hover {
+    transform: scale(1.1);
 }
 
 #display-label {
@@ -11,16 +39,4 @@
 #display-field {
     width: 350px;
     margin: 2px;
-}
-
-.photo-display-img {
-    width: 550px;
-    max-height: 600px;
-    padding: 5px;
-    transition: 1s;
-}
-
-
-.photo-display-img :hover {
-    transform: scale(1.1);
 }

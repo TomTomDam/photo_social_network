@@ -22,12 +22,6 @@ namespace SocialNetwork.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            //var login = db.user
-            //    .Include(u => u.id)
-            //    .Include(u => u.username)
-            //    .Include(u => u.password)
-            //    .Include(u => u.rememberMe);
-
             return View();
         }
 
@@ -58,6 +52,8 @@ namespace SocialNetwork.Controllers
             {
                 ModelState.AddModelError("", "Username or password is not correct.");
             }
+
+            TempData["LoginMessage"] = "You must login before you can do that action.";
 
             //Remember username and password
             if (usr != null && user.rememberMe == true)

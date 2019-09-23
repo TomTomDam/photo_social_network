@@ -14,7 +14,7 @@ namespace SocialNetwork.Controllers
 {
     public class PhotosController : Controller
     {
-        private PhotoSocialNetwork_DB db = new PhotoSocialNetwork_DB();
+        private readonly PhotoSocialNetwork_DB db = new PhotoSocialNetwork_DB();
 
         // GET: Photos
         public ActionResult Index()
@@ -127,8 +127,6 @@ namespace SocialNetwork.Controllers
 
                     byte[] uploadedImage = new byte[image.InputStream.Length];
                     image.InputStream.Read(uploadedImage, 0, uploadedImage.Length);
-
-
                 }
 
                 db.Photos.Add(photo);

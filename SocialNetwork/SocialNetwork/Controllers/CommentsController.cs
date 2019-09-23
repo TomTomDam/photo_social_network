@@ -13,7 +13,7 @@ namespace SocialNetwork.Controllers
 {
     public class CommentsController : Controller
     {
-        private PhotoSocialNetwork_DB db = new PhotoSocialNetwork_DB();
+        private readonly PhotoSocialNetwork_DB db = new PhotoSocialNetwork_DB();
 
         //GET: Comments Partial View within the Photos/Details view
         [ChildActionOnly]

@@ -297,6 +297,7 @@
     <Content Include="Views\Comments\Edit.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_PhotoGallery.cshtml" />
+    <Content Include="Views\Shared\_AddComment.cshtml" />
     <Content Include="Views\Shared\_CommentPhoto.cshtml" />
   </ItemGroup>
   <ItemGroup>

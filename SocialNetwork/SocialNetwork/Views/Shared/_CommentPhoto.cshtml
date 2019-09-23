@@ -1,1 +1,42 @@
-﻿
+﻿@model IEnumerable<SocialNetwork.Models.Comment>
+
+@{
+    Layout = null;
+}
+
+@{
+    AjaxOptions ajax = new AjaxOptions { UpdateTargetId = "all-comments" };
+}
+
+<h3>Comments</h3>
+<br />
+@using (Ajax.BeginForm("_CommentPhoto", new { photoId = ViewBag.photoId }, ajax))
+{
+    <div class="" id="all-comments">
+        @foreach (var comment in Model)
+        {
+            <div class="" id="photo-comment">
+                <div class="" id="photo-comment-username">
+                    @Html.DisplayFor(modelItem => comment.username)
+                </div>
+
+                <div class="" id="photo-comment-text">
+                    @Html.DisplayFor(modelItem => comment.text)
+                </div>
+
+                @Html.ActionLink("Delete comment", "Delete", "Comments", new { id = comment.commentId })
+            </div>
+        }
+
+        <div class="" id="add-comment">
+            @if (Session["username"] != null)
+            {
+                @Html.ActionLink("Create a comment", "Create", "Comments", new { photoId = ViewBag.photoId }, null)
+            }
+            else
+            {
+                @Html.ActionLink("Login to comment", "Login", "Account")
+            }
+        </div>
+    </div>
+}
