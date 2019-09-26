@@ -21,7 +21,7 @@
         @Html.HiddenFor(model => model.photoId)
 
         <div class="form-group" id="edit-label">
-            @Html.LabelFor(model => model.title, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.title, new { @class = "col-form-label col-md-2" })
             <div class="col-md-10" id="edit-field">
                 @Html.EditorFor(model => model.title, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.title, "", new { @class = "text-danger" })
@@ -29,7 +29,7 @@
         </div>
 
         <div class="form-group" id="edit-label">
-            @Html.LabelFor(model => model.photoFilePath, "Upload Image", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.photoFilePath, "Upload Image", htmlAttributes: new { @class = "col-form-label col-md-2" })
             <div class="col-md-10" id="edit-field">
 
                 <input class="upload-picture-input" type="file" name="Image" />
@@ -41,7 +41,7 @@
         </div>
 
         <div class="form-group" id="edit-label">
-            @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "col-form-label col-md-2" })
             <div class="col-md-10" id="edit-display">
                 @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
@@ -49,7 +49,7 @@
         </div>
 
         <div class="form-group" id="edit-label">
-            @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "col-form-label col-md-2" })
             <div class="col-md-10" id="edit-display">
                 @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
@@ -57,7 +57,7 @@
         </div>
 
         <div class="form-group" id="edit-label">
-            @Html.LabelFor(model => model.createdDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.createdDate, htmlAttributes: new { @class = "col-form-label col-md-2" })
             <div class="col-md-10" id="edit-display">
                 @Html.EditorFor(model => model.createdDate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.createdDate, "", new { @class = "text-danger" })
@@ -65,7 +65,7 @@
         </div>
 
         <div class="form-group" id="edit-label">
-            @Html.LabelFor(model => model.modifiedDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.modifiedDate, htmlAttributes: new { @class = "col-form-label col-md-2" })
             <div class="col-md-10" id="edit-display">
                 @Html.EditorFor(model => model.modifiedDate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.modifiedDate, "", new { @class = "text-danger" })
@@ -74,7 +74,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </div>
     </div>

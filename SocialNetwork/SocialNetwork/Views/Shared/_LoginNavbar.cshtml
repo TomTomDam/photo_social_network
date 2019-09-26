@@ -5,7 +5,7 @@
 
     using (Html.BeginForm("Logout", "Account", FormMethod.Post))
     {
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav ml-auto">
             <li class="nav-item">@Html.ActionLink(" Welcome " + Session["username"] + "!", "Person", "Account", new { id = Session["id"] }, new { @class = "nav-link" })</li>
             @*<li class="nav-item"><a href="@Url.Action("Person", "Account", new { id = Session["id"] })"><i class="fas fa-user"></i>Welcome + @Session["username"] + !</a></li>*@
             <li class="nav-item">@Html.ActionLink("Log out", "Logout", "Account", null, new { @class = "nav-link" })</li>
@@ -14,7 +14,7 @@
 }
 else
 {
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav ml-auto">
         <li class="nav-item">@Html.ActionLink("Login", "Login", "Account", null, new { @class = "nav-link" })</li>
         <li class="nav-item">@Html.ActionLink("Register", "Register", "Account", null, new { @class = "nav-link" })</li>
     </ul>

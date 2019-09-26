@@ -17,18 +17,21 @@
     <div class="" id="all-comments">
         @foreach (var comment in Model)
         {
-            <div class="" id="photo-comment">
-                <div class="" id="photo-comment-username">
-                    @Html.DisplayFor(modelItem => comment.username)
-                </div>
-
-                <div class="" id="photo-comment-text">
-                    @Html.DisplayFor(modelItem => comment.text)
-                </div>
-
-                <br />
-                @Html.ActionLink("Delete comment", "Delete", "Comments", new { id = comment.commentId }, null)
+        <div class="" id="photo-comment">
+            <div class="" id="photo-comment-username">
+                @Html.DisplayFor(modelItem => comment.username)
             </div>
+
+            <div class="" id="photo-comment-text">
+                @Html.DisplayFor(modelItem => comment.text)
+            </div>
+
+            <br />
+            @if (Session["username"] != null)
+            {
+                @Html.ActionLink("Delete comment", "Delete", "Comments", new { id = comment.commentId }, null)
+            }
+        </div>
         }
 
         <div class="" id="add-comment">
