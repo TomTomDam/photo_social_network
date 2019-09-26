@@ -1,18 +1,21 @@
-﻿@if (Session["username"] != null)
+﻿<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+@if (Session["username"] != null)
 {
 
-    using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { @class = "navbar-nav navbar-right"}))
+    using (Html.BeginForm("Logout", "Account", FormMethod.Post))
     {
-        <ul class="nav navbar-nav navbar-right">
-            <li>@Html.ActionLink(" Welcome " + Session["username"] + "!", "Person", "Account", new { id = Session["id"] }, new { @class = "fas fa-user" })</li>
-            <li>@Html.ActionLink("Log out", "Logout", "Account")</li>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">@Html.ActionLink(" Welcome " + Session["username"] + "!", "Person", "Account", new { id = Session["id"] }, new { @class = "nav-link" })</li>
+            @*<li class="nav-item"><a href="@Url.Action("Person", "Account", new { id = Session["id"] })"><i class="fas fa-user"></i>Welcome + @Session["username"] + !</a></li>*@
+            <li class="nav-item">@Html.ActionLink("Log out", "Logout", "Account", null, new { @class = "nav-link" })</li>
         </ul>
     }
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Login", "Login", "Account")</li>
-        <li>@Html.ActionLink("Register", "Register", "Account")</li>
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">@Html.ActionLink("Login", "Login", "Account", null, new { @class = "nav-link" })</li>
+        <li class="nav-item">@Html.ActionLink("Register", "Register", "Account", null, new { @class = "nav-link" })</li>
     </ul>
 }

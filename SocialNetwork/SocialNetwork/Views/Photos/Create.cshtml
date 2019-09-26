@@ -6,6 +6,10 @@
 
 <h2>@ViewBag.Title</h2>
 
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/Scripts/jquery.validate.date.js")
+
 @using (Html.BeginForm("Create", "Photos", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -28,7 +32,7 @@
             @Html.LabelFor(model => model.photoFilePath, "Upload Image", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10" id="edit-field">
 
-                <input class="upload-picture-input" type="file" name="Image"/>
+                <input class="upload-picture-input" type="file" name="Image" />
 
                 @*<img class="" src=""/>*@
 

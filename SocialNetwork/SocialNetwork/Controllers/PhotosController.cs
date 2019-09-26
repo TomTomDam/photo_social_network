@@ -118,7 +118,9 @@ namespace SocialNetwork.Controllers
                     string filePath = Path.Combine(Server.MapPath("~/Images/"), image.FileName);
                     photo.photoFilePath = filePath;
 
-                    photo.photoImage.SaveAs(filePath);
+                    photo.photoImage.SaveAs(filePath); //Currently returns null - not set to reference of an object
+
+
 
                     //image.InputStream.Read(photo.photoFilePath, 0, image.ContentLength);
 

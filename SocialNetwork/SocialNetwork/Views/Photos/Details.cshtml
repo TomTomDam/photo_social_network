@@ -9,7 +9,7 @@
 @if (Model.photoFilePath != null)
 {
     <div class="">
-        <img src="~/Images/@(Model.photoFilePath)"/>
+        <img class="mx-auto d-block" id="photo-display-img" src="~/Images/@(Model.photoFilePath)"/>
     </div>
 }
 
