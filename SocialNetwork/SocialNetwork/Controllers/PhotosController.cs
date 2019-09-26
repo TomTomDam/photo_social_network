@@ -115,18 +115,15 @@ namespace SocialNetwork.Controllers
                 {
                     photo.imageMimeType = image.ContentType;
 
-                    var filePath = Path.Combine(Server.MapPath("~/Images/"), image.FileName);
+                    string filePath = Path.Combine(Server.MapPath("~/Images/"), image.FileName);
                     photo.photoFilePath = filePath;
+
+                    photo.photoImage.SaveAs(filePath);
 
                     //image.InputStream.Read(photo.photoFilePath, 0, image.ContentLength);
 
-                    using (StreamReader sr = System.IO.File.OpenText(filePath))
-                    {
-
-                    }
-
-                    byte[] uploadedImage = new byte[image.InputStream.Length];
-                    image.InputStream.Read(uploadedImage, 0, uploadedImage.Length);
+                    //byte[] uploadedImage = new byte[image.InputStream.Length];
+                    //image.InputStream.Read(uploadedImage, 0, uploadedImage.Length);
                 }
 
                 db.Photos.Add(photo);

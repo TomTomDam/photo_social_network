@@ -227,6 +227,14 @@
     <Compile Include="Migrations\PhotoCommentContext\201909222014135_Repopulate-Photos-Comments.Designer.cs">
       <DependentUpon>201909222014135_Repopulate-Photos-Comments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\PhotoCommentContext\201909261230365_Update-Photo-Logic.cs" />
+    <Compile Include="Migrations\PhotoCommentContext\201909261230365_Update-Photo-Logic.Designer.cs">
+      <DependentUpon>201909261230365_Update-Photo-Logic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\PhotoCommentContext\201909261234272_Update-Photo-Logic-AddCommentsFKConstraint.cs" />
+    <Compile Include="Migrations\PhotoCommentContext\201909261234272_Update-Photo-Logic-AddCommentsFKConstraint.Designer.cs">
+      <DependentUpon>201909261234272_Update-Photo-Logic-AddCommentsFKConstraint.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\PhotoCommentContext\Configuration.cs" />
     <Compile Include="Models\Account\Account.cs" />
     <Compile Include="Models\Account\AccountContext.cs" />
@@ -331,6 +339,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\PhotoCommentContext\201909222014135_Repopulate-Photos-Comments.resx">
       <DependentUpon>201909222014135_Repopulate-Photos-Comments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\PhotoCommentContext\201909261230365_Update-Photo-Logic.resx">
+      <DependentUpon>201909261230365_Update-Photo-Logic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\PhotoCommentContext\201909261234272_Update-Photo-Logic-AddCommentsFKConstraint.resx">
+      <DependentUpon>201909261234272_Update-Photo-Logic-AddCommentsFKConstraint.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

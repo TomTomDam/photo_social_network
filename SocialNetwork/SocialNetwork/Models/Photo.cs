@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -21,9 +22,10 @@ namespace SocialNetwork.Models
         [MaxLength]
         public string photoFilePath { get; set; }
 
-        //[Display(Name = "Upload Image")]
-        //[MaxLength]
-        //public HttpPostedFileBase photoImage { get; set; }
+        [Display(Name = "Upload Image")]
+        [MaxLength]
+        [NotMapped]
+        public HttpPostedFileBase photoImage { get; set; }
 
         [HiddenInput(DisplayValue = false)]
         [Display(Name = "Image MIME Type")]

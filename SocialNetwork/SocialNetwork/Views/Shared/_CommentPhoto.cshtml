@@ -4,11 +4,13 @@
     Layout = null;
 }
 
+<link href="~/Content/stylesheet.css" rel="stylesheet" />
+
 @{
     AjaxOptions ajax = new AjaxOptions { UpdateTargetId = "all-comments" };
 }
 
-<h3>Comments</h3>
+<h3 class="page-header">Comments</h3>
 <br />
 @using (Ajax.BeginForm("_CommentPhoto", new { photoId = ViewBag.photoId }, ajax))
 {
@@ -24,18 +26,19 @@
                     @Html.DisplayFor(modelItem => comment.text)
                 </div>
 
-                @Html.ActionLink("Delete comment", "Delete", "Comments", new { id = comment.commentId })
+                <br />
+                @Html.ActionLink("Delete comment", "Delete", "Comments", new { id = comment.commentId }, null)
             </div>
         }
 
         <div class="" id="add-comment">
             @if (Session["username"] != null)
             {
-                @Html.ActionLink("Create a comment", "Create", "Comments", new { photoId = ViewBag.photoId }, null)
+                @Html.ActionLink("Create a comment", "Create", "Comments", new { photoId = ViewBag.photoId }, htmlAttributes: new { @class = "btn btn-primary" })
             }
             else
             {
-                @Html.ActionLink("Login to comment", "Login", "Account")
+                @Html.ActionLink("Login to comment", "Login", "Account", null, htmlAttributes: new { @class = "btn btn-primary" })
             }
         </div>
     </div>

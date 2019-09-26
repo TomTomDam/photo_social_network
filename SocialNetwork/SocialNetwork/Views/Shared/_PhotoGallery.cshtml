@@ -12,7 +12,7 @@
 
         <div class="" id="photo-gallery">
 
-            <h3>
+            <h3 class="page-header">
                 @Html.DisplayFor(modelItem => item.title)
             </h3>
 
@@ -53,7 +53,7 @@
                 </div>
             </div>
 
-            @Html.ActionLink("Details", "Details", "Photos", new { id = item.photoId }, null)
+            @Html.ActionLink("Details", "Details", "Photos", new { id = item.photoId }, htmlAttributes: new { @class = "btn btn-primary" })
         </div>
     }
 </div>

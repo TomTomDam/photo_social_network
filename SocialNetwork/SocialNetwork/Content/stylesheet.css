@@ -13,8 +13,9 @@
 }
 
 #photo-gallery {
-    margin: 10px 20px;
-    padding: 5px;
+    border: 2px solid black;
+    margin: 10px 80px;
+    padding: 10px;
     float: left;
     width: 33.33%;
 }
@@ -39,4 +40,10 @@
 #display-field {
     width: 350px;
     margin: 2px;
+}
+
+#photo-comment {
+    border: 2px solid grey;
+    padding: 15px;
+    margin: 0px 5px 25px;
 }
