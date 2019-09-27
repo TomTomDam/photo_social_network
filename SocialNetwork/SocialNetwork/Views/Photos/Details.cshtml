@@ -9,7 +9,7 @@
 @if (Model.photoFilePath != null)
 {
     <div class="">
-        <img class="mx-auto d-block" id="photo-display-img" src="~/Images/@(Model.photoFilePath)"/>
+        <img class="mx-auto d-block" id="photo-display-img" src="~/Images/@(Model.photoFilePath)" />
     </div>
 }
 
@@ -59,9 +59,14 @@
     </dl>
 </div>
 
+@if (Session["username"] != null)
+{
+    @Html.ActionLink("Delete Photo", "Delete", "Photos", new { id = Model.photoId }, new { @class = "btn btn-primary" })
+}
+
 @Html.Action("_CommentPhoto", "Comments", new { photoId = Model.photoId })
 <br />
 
 <p>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to Photos Index", "Index")
 </p>

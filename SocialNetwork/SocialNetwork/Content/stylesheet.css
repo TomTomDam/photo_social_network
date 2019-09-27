@@ -2,14 +2,8 @@
     box-sizing: border-box;
 }
 
-.photo-container {
+#photo-container {
     margin: 20px 10px;
-}
-
-.photo-container::after {
-    content: "";
-    clear: both;
-    display: table;
 }
 
 .page-header {
@@ -19,17 +13,13 @@
 }
 
 #photo-gallery {
-    border: 2px solid black;
     margin: 10px 80px;
-    padding: 5px;
-    float: left;
-    width: 33.33%;
+    padding: 6px;
 }
 
 #photo-gallery img {
     width: 350px;
     height: 400px;
-    padding: 5px;
     transition: 1s;
 }
 

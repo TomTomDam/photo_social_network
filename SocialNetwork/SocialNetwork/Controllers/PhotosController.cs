@@ -118,14 +118,10 @@ namespace SocialNetwork.Controllers
                     string filePath = Path.Combine(Server.MapPath("~/Images/"), image.FileName);
                     photo.photoFilePath = filePath;
 
-                    photo.photoImage.SaveAs(filePath); //Currently returns null - not set to reference of an object
-
-
-
-                    //image.InputStream.Read(photo.photoFilePath, 0, image.ContentLength);
-
-                    //byte[] uploadedImage = new byte[image.InputStream.Length];
-                    //image.InputStream.Read(uploadedImage, 0, uploadedImage.Length);
+                    photo.photoImage.SaveAs(filePath);
+                    
+                    //Need to save filepath and image.mimeType to database
+                    //Consider rebuilding database
                 }
 
                 db.Photos.Add(photo);

@@ -6,52 +6,56 @@
 
 <link href="~/Content/stylesheet.css" rel="stylesheet" />
 
-<div class="photo-container">
-    @foreach (var item in Model)
-    {
+<div class="container" id="photo-container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6">
+                <div class="card shadow" id="photo-gallery">
 
-        <div class="card" id="photo-gallery">
+                    <h3 class="card-title">
+                        @Html.DisplayFor(modelItem => item.title)
+                    </h3>
 
-            <h3 class="card-title">
-                @Html.DisplayFor(modelItem => item.title)
-            </h3>
+                    @if (item.photoFilePath != null)
+                    {
+                        @*<img class="" src="@Url.Action("GetImage", "Photo", new { photoId = item.photoId})" />*@
+                        <img class="card-img-top" id="photo-gallery-img" src="~/Images/@(item.photoFilePath)" />
+                    }
 
-            @if (item.photoFilePath != null)
-            {
-                @*<img class="" src="@Url.Action("GetImage", "Photo", new { photoId = item.photoId})" />*@
-                <img class="card-img-top" id="photo-display-img" src="~/Images/@(item.photoFilePath)" />
-            }
+                    <div class="card-body" id="photo-data">
+                        <div>
+                            <span class="card-text" id="display-label">
+                                Uploaded by:
+                            </span>
+                            <span class="display-field">
+                                @Html.DisplayFor(model => item.username)
+                            </span>
+                        </div>
 
-            <div class="card-body" id="photo-data">
-                <div>
-                    <span class="card-text" id="display-label">
-                        Uploaded by:
-                    </span>
-                    <span class="display-field">
-                        @Html.DisplayFor(model => item.username)
-                    </span>
-                </div>
+                        <div>
+                            <span class="card-text" id="display-label">
+                                @Html.DisplayNameFor(model => model.createdDate):
+                            </span>
+                            <span class="display-field">
+                                @Html.DisplayFor(model => item.createdDate)
+                            </span>
+                        </div>
 
-                <div>
-                    <span class="card-text" id="display-label">
-                        @Html.DisplayNameFor(model => model.createdDate):
-                    </span>
-                    <span class="display-field">
-                        @Html.DisplayFor(model => item.createdDate)
-                    </span>
-                </div>
+                        <div>
+                            <span class="card-text" id="display-label">
+                                @Html.DisplayNameFor(model => model.modifiedDate):
+                            </span>
+                            <span class="display-field">
+                                @Html.DisplayFor(model => item.modifiedDate)
+                            </span>
+                        </div>
+                    </div>
 
-                <div>
-                    <span class="card-text" id="display-label">
-                        @Html.DisplayNameFor(model => model.modifiedDate):
-                    </span>
-                    <span class="display-field">
-                        @Html.DisplayFor(model => item.modifiedDate)
-                    </span>
+                    @Html.ActionLink("Details", "Details", "Photos", new { id = item.photoId }, htmlAttributes: new { @class = "btn btn-primary" })
                 </div>
             </div>
 
-            @Html.ActionLink("Details", "Details", "Photos", new { id = item.photoId }, htmlAttributes: new { @class = "btn btn-primary" })
-        </div>
-    }
+        }
+    </div>
 </div>
