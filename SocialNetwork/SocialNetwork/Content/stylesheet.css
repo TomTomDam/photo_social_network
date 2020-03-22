@@ -1,0 +1,54 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+#photo-container {
+    margin: 20px 10px;
+}
+
+.page-header {
+    padding-bottom: 2px;
+    margin: 40px 0 20px;
+    border-bottom: 1px solid #eee;
+}
+
+#photo-gallery {
+    margin: 10px 80px;
+    padding: 6px;
+}
+
+#photo-gallery img {
+    width: 350px;
+    height: 400px;
+    transition: 1s;
+}
+
+#photo-gallery img:hover {
+    transform: scale(1.1);
+}
+
+#photo-display-img {
+    width: 700px;
+    height: 550px;
+}
+
+#display-label {
+    display: inline-block;
+    width: 150px;
+    margin: 2px;
+}
+
+#display-field {
+    width: 350px;
+    margin: 2px;
+}
+
+#photo-comment {
+    border: 2px solid grey;
+    padding: 15px;
+    margin: 0px 5px 25px;
+}
+
+#photo-comment-username {
+    font-weight: bold;
+}

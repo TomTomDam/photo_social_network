@@ -1,0 +1,13 @@
+﻿@model IEnumerable<SocialNetwork.Models.Photo>
+
+@{
+    ViewBag.Title = "Photos Index";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@Html.Action("PhotoGallery", "Photos")

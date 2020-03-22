@@ -1,0 +1,29 @@
+﻿@model SocialNetwork.Models.Account
+
+<div>
+    <h4>Your PhotoSocial Account Details</h4>
+    @{Html.RenderPartial("LoggedIn", "Account");}
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Reset your password", "ResetPassword", "Account", new { id = Model.id }, null)
+</p>
+   

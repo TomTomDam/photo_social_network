@@ -1,0 +1,21 @@
+﻿@model SocialNetwork.Models.Comment
+
+@{ 
+    Layout = null;
+}
+
+@Html.ValidationSummary(true)
+
+<div class="add-comment">
+    <div class="">
+        <div class="comment-edit-label">
+            @Html.LabelFor(model => model.text)
+        </div>
+        <div class="comment-edit-field">
+            @Html.EditorFor(model => model.text)
+            @Html.ValidationMessageFor(model => model.text)
+        </div>
+    </div>
+
+    <input type="submit" name="Post comment" value="Create" />
+</div>
