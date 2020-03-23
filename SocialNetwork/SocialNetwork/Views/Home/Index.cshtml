@@ -1,7 +1,16 @@
 ﻿@{
     ViewBag.Title = "Welcome to PhotoSocial";
 }
-<p class="page-header lead">Create an account to instantly share your favourite moments with everyone.</p>
+
+
+@if (Session["username"] != null)
+{
+    <p class="page-header lead">Hello, @Session["username"].</p>
+}
+else
+{
+    <p class="page-header lead">Create an account to instantly share your favourite moments with everyone.</p>
+}
 
 <h2>Latest Photos:</h2>
 
