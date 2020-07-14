@@ -39,7 +39,7 @@ namespace SocialNetwork.Controllers
                 rememberMe = user.rememberMe
             };
 
-            var usr = db.user.Where(u => u.username == user.username && u.password == user.password).FirstOrDefault();
+            var usr = db.user.FirstOrDefault(u => u.username == user.username && u.password == user.password);
 
             if (usr != null)
             {
